@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import {useEffect, useState} from "react";
 
-function App() {
+const url = 'https://api.github.com/users';
+
+const FetchData = () => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resp = await fetch(url)
+        const user = await resp.json()
+        setData(user)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchData()
+  }, []);
+
+  console.log(data)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+      <main>
+        <section className='container'>
 
-export default App;
+          <h2>fetch data example</h2>
+          <h3>Github Users</h3>
+
+          {data.map((user) => {
+            const {id, login, avatar_url, url} = user;
+            return (
+                <div key={id} className='userBox'>
+                  <div className='image'>
+                    {<img src={avatar_url} alt=""/>}
+                  </div>
+                  <div className='nameProfilebox'>
+                    <h1>{login}</h1>
+                    <a href={url}>Profile</a>
+
+                  </div>
+                </div>
+            )
+          })}
+        </section>
+
+      </main>
+
+  )
+};
+export default FetchData;
+
+

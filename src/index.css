@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #aaa9a9;
+}
+.container {
+  width: 90vw;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  box-shadow: black ;
+}
+
+.userBox {
+  min-width: 500px;
+  min-height: 100px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background: #f2efef;
+  margin-bottom: 30px;
+  padding-left: 40px;
+}
+
+img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 70%;
+}
+
+.nameProfilebox {
+  padding: 20px 20px ;
+}
